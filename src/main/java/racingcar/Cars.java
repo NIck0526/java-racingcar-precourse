@@ -24,7 +24,11 @@ public class Cars {
         return cars;
     }
 
-
+    public void race() {
+        for (int i = 0; i < cars.size(); i++) {
+            cars.get(i).putGas((int) (Math.random() *10));
+        }
+    }
 
 
 

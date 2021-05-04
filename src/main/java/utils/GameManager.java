@@ -15,7 +15,9 @@ public class GameManager {
 
     public void setUp() {
         inputName();
+        inputTryNumber();
     }
+
 
 
     public void inputName(){
@@ -33,5 +35,12 @@ public class GameManager {
         return new ArrayList<>(Arrays.asList(inputArr));
     }
 
-
+    public void inputTryNumber(){
+        System.out.println(Message.HOW_MANY.getMessage());
+        while (!sc.hasNextInt()) {
+            sc.next();
+            System.err.print(Message.HOW_MANY.getMessage());
+        }
+        TRY_NUMBER =sc.nextInt();
+    }
 }
