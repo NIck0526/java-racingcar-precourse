@@ -22,10 +22,6 @@ public class RaceResult {
         return winner;
     }
 
-    public List<Integer> getWinnerList() {
-        return winnerList;
-    }
-
     public void judge(){
         max = cars.getCars().get(0).getLocation();
         for (int i = 1; i < cars.getCars().size(); i++) {

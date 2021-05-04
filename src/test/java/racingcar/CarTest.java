@@ -33,6 +33,4 @@ public class CarTest {
         assertThat(carStatus).isEqualTo(CarStatus.STOP);
     }
 
-
-
 }

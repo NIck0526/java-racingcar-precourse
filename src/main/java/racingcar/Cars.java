@@ -8,12 +8,12 @@ public class Cars {
 
     private List<Car> cars;
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public Cars(List<String> names) {
         this.cars =  mapCar(names);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     private static List<Car> mapCar(List<String> names) {
@@ -29,8 +29,5 @@ public class Cars {
             cars.get(i).putGas((int) (Math.random() *10));
         }
     }
-
-
-
 
 }
