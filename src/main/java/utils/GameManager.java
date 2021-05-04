@@ -28,27 +28,13 @@ public class GameManager {
         System.out.println(Message.RACE.getMessage());
         for (int i = 0; i < TRY_NUMBER; i++) {
             cars.race();
-            report();
         }
     }
 
-    private void report() {
-        for (int i = 0; i < cars.getCars().size(); i++) {
-            String distance = convertHyphen(cars.getCars().get(i).getLocation());
-            System.out.println(cars.getCars().get(i).getName()+":"+distance);
-        }
-        System.out.println("");
+    public void raceResult(){
+        RaceResult raceResult = new RaceResult(cars);
+        raceResult.judge();
     }
-
-    private String convertHyphen(int location) {
-        String distance = "";
-        for (int i = 0; i < location; i++) {
-            distance += "-";
-        }
-        return distance;
-    }
-
-
 
     public void inputName(){
         String[] inputArr = sc.nextLine().split(",");

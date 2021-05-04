@@ -15,6 +15,7 @@ public class GameManagerTest {
 
     private GameManager gm;
     private Cars cars;
+    private RaceResult raceResult;
 
     @BeforeEach
     void setUp(){
@@ -62,5 +63,21 @@ public class GameManagerTest {
         assertThat(carList.get(maxIndex).getLocation()).isEqualTo(maxLocation);
     }
 
+    @DisplayName("한 명 이상의 우승자 선출")
+    @Test
+    void getWinner(){
+        //given
+        int[] gasArr = {3, 5, 5};
+
+        //when
+        cars.getCars().get(0).putGas(gasArr[0]);
+        cars.getCars().get(1).putGas(gasArr[1]);
+        cars.getCars().get(2).putGas(gasArr[2]);
+        raceResult = new RaceResult(cars);
+        raceResult.judge();
+
+        //then
+        assertThat(raceResult.getWinnerList().size()).isEqualTo(2);
+    }
 
 }

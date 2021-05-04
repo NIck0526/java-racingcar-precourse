@@ -12,7 +12,6 @@ public class Car {
     }
 
     public CarStatus putGas(int  gas) {
-        System.out.println(this.getName()+" __ 주입 :: "+gas);
         if (move(gas)) {
             this.location++;
             return CarStatus.GO;

@@ -1,5 +1,6 @@
 import utils.GameManager;
 import utils.Message;
+import utils.RaceResult;
 
 public class Application {
 
@@ -9,5 +10,6 @@ public class Application {
         System.out.println(Message.SET_UP.getMessage());
         gm.setUp();
         gm.race();
+        gm.raceResult();
     }
 }
