@@ -25,15 +25,33 @@ public class GameManager {
     }
 
     public void race(){
-        System.out.println(Message.RACE.getMessage());
+        System.out.println(Message.RACE_RESULT.getMessage());
         for (int i = 0; i < TRY_NUMBER; i++) {
             cars.race();
+            report();
         }
+    }
+
+    private void report() {
+        for (int i = 0; i < cars.getCars().size(); i++) {
+            String distance = convertHyphen(cars.getCars().get(i).getLocation());
+            System.out.println(cars.getCars().get(i).getCarName()+":"+distance);
+        }
+        System.out.println("");
+    }
+
+    private String convertHyphen(int location) {
+        String distance = "";
+        for (int i = 0; i < location; i++) {
+            distance += "-";
+        }
+        return distance;
     }
 
     public void raceResult(){
         RaceResult raceResult = new RaceResult(cars);
         raceResult.judge();
+        raceResult.getResult();
     }
 
     public void inputName(){
@@ -55,7 +73,8 @@ public class GameManager {
         System.out.println(Message.HOW_MANY.getMessage());
         while (!sc.hasNextInt()) {
             sc.next();
-            System.err.print(Message.HOW_MANY.getMessage());
+            System.err.println(Message.INVALID.getMessage());
+            System.err.println(Message.HOW_MANY.getMessage());
         }
         TRY_NUMBER =sc.nextInt();
     }

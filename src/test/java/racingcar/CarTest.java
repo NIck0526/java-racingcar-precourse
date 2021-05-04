@@ -22,7 +22,7 @@ public class CarTest {
     @Test
     void go(){
         CarStatus carStatus = car.putGas(gas);
-        assertThat(car.getName()).isEqualTo("BMW");
+        assertThat(car.getCarName()).isEqualTo("BMW");
         assertThat(carStatus).isEqualTo(CarStatus.GO);
     }
 

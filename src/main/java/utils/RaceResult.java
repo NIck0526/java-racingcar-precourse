@@ -32,7 +32,7 @@ public class RaceResult {
             max =changeRank(i, max);
         }
         for (int i = 0; i < winnerList.size(); i++) {
-            winner += cars.getCars().get(winnerList.get(i)).getName();
+            winner += cars.getCars().get(winnerList.get(i)).getCarName()+",";
         }
     }
 
@@ -46,4 +46,9 @@ public class RaceResult {
         }
         return cars.getCars().get(index).getLocation();
     }
+
+    public void getResult(){
+        System.out.println(getWinner().substring(0, getWinner().length()-1)+Message.FINISH.getMessage());
+    }
+
 }

@@ -23,7 +23,7 @@ public class Car {
         return 4 <= gas;
     }
 
-    public String getName() {
+    public String getCarName() {
         return carName.getName();
     }
 

@@ -33,9 +33,9 @@ public class GameManagerTest {
         //when
 
         //then
-        assertThat(carList.get(0).getName()).isEqualTo("BMW");
-        assertThat(carList.get(1).getName()).isEqualTo("AUDI");
-        assertThat(carList.get(2).getName()).isEqualTo("BENZ");
+        assertThat(carList.get(0).getCarName()).isEqualTo("BMW");
+        assertThat(carList.get(1).getCarName()).isEqualTo("AUDI");
+        assertThat(carList.get(2).getCarName()).isEqualTo("BENZ");
     }
     
     @DisplayName("random 값 주입 시 조건에 따른 race 기능 구현")
@@ -77,7 +77,7 @@ public class GameManagerTest {
         raceResult.judge();
 
         //then
-        assertThat(raceResult.getWinnerList().size()).isEqualTo(2);
+        assertThat(raceResult.getWinner().split(",").length).isEqualTo(2);
     }
 
 }
