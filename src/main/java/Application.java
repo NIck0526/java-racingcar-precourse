@@ -8,5 +8,6 @@ public class Application {
     public static void main(String[] args) {
         System.out.println(Message.SET_UP.getMessage());
         gm.setUp();
+        gm.race();
     }
 }

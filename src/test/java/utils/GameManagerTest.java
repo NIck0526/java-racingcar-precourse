@@ -15,7 +15,6 @@ public class GameManagerTest {
 
     private GameManager gm;
     private Cars cars;
-    private RaceResult raceResult;
 
     @BeforeEach
     void setUp(){
@@ -28,31 +27,40 @@ public class GameManagerTest {
     @Test
     void inputName(){
         //given
+        List<Car> carList = cars.getCars();
 
         //when
-        List<Car> carList = cars.getCars();
 
         //then
         assertThat(carList.get(0).getName()).isEqualTo("BMW");
         assertThat(carList.get(1).getName()).isEqualTo("AUDI");
         assertThat(carList.get(2).getName()).isEqualTo("BENZ");
     }
-
-    @DisplayName("한 명 이상의 우승자 선출")
+    
+    @DisplayName("random 값 주입 시 조건에 따른 race 기능 구현")
     @Test
-    void getWinner(){
+    void race(){
         //given
-        int[] gasArr = {3, 5, 1};
+        gm = new GameManager(3, cars);
+        List<Car> carList = cars.getCars();
 
         //when
-        cars.getCars().get(0).putGas(gasArr[0]);
-        cars.getCars().get(1).putGas(gasArr[1]);
-        cars.getCars().get(2).putGas(gasArr[2]);
-        raceResult = new RaceResult(cars);
-        raceResult.raceResult();
-
+        gm.race();
+        int maxLocation = carList.get(0).getLocation();
+        int maxIndex = 0; 
+        for (int i = 0; i < carList.size(); i++) {
+            if (maxLocation > carList.get(i).getLocation()) {
+                maxLocation = carList.get(i).getLocation();
+                maxIndex = i;
+            }    
+        }
+        
         //then
-        assertThat(raceResult.getWinner()).isEqualTo("AUDI");
+        assertThat(carList.get(0).getLocation()).isNotNull();
+        assertThat(carList.get(1).getLocation()).isNotNull();
+        assertThat(carList.get(2).getLocation()).isNotNull();
+        assertThat(carList.get(maxIndex).getLocation()).isEqualTo(maxLocation);
     }
+
 
 }

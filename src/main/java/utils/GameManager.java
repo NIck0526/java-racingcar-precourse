@@ -10,12 +10,42 @@ public class GameManager {
 
     private static Cars cars;
     private static int TRY_NUMBER;
-    private static List<String> nameList;
 
+    public GameManager() {
+    }
+
+    public GameManager(int number, Cars cars) {
+        this.TRY_NUMBER = number;
+        this.cars = cars;
+    }
 
     public void setUp() {
         inputName();
         inputTryNumber();
+    }
+
+    public void race(){
+        System.out.println(Message.RACE.getMessage());
+        for (int i = 0; i < TRY_NUMBER; i++) {
+            cars.race();
+            report();
+        }
+    }
+
+    private void report() {
+        for (int i = 0; i < cars.getCars().size(); i++) {
+            String distance = convertHyphen(cars.getCars().get(i).getLocation());
+            System.out.println(cars.getCars().get(i).getName()+":"+distance);
+        }
+        System.out.println("");
+    }
+
+    private String convertHyphen(int location) {
+        String distance = "";
+        for (int i = 0; i < location; i++) {
+            distance += "-";
+        }
+        return distance;
     }
 
 
